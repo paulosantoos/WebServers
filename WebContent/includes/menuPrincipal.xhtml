@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="ISO-8859-1" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:ui="http://java.sun.com/jsf/facelets">
+
+
+	<!-- ABRE UM FORM E DEFINE UM ID -->
+	<h:form id="frmMenuPrincipal">
+		<!-- 	OUTPUTLABEL É PARA EXIBIR O NOME DO FUNCIONARIO QUE LOGOU -->
+		<p:outputLabel value="Usuário: #{MBAutenticar.funcionarioLogado.nome}" />
+		<br></br>
+		<br></br>
+		<!-- 		DEFINE OS MENUS -->
+		<p:panelMenu id="pnlMenuPrincipal" style="width:200px">
+			<p:submenu label="ARQUIVO">
+				<p:menuitem value="Sair" />
+			</p:submenu>
+
+		</p:panelMenu>
+	</h:form>
+</ui:composition>
