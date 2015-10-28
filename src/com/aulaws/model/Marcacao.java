@@ -6,13 +6,17 @@ import java.util.Arrays;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
 import javax.persistence.Lob;
+import javax.persistence.ManyToOne;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 import javax.persistence.Table;
+
 
 @Entity
 @Table(name = "marcacao")
@@ -64,7 +68,9 @@ public class Marcacao implements Serializable {
 	@Column(name = "mar_achou_perdeu", columnDefinition = "tinyint default false")
 	boolean achou_perdeu;
 	
-	
+	@ManyToOne(fetch = FetchType.EAGER)
+	@JoinColumn(name = "mar_cat_id", referencedColumnName = "cat_id", nullable = false)
+	private Categoria categoria = new Categoria();
 	
 	
 	public boolean isAchou_perdeu() {
@@ -139,12 +145,22 @@ public class Marcacao implements Serializable {
 		this.telefone = telefone;
 	}
 
+	public Categoria getCategoria() {
+		return categoria;
+	}
+
+	public void setCategoria(Categoria categoria) {
+		this.categoria = categoria;
+	}
+
 	@Override
 	public String toString() {
 		return "Marcacao [codigo=" + codigo + ", titulo=" + titulo
 				+ ", latitude=" + latitude + ", longitude=" + longitude
 				+ ", dataCadastro=" + dataCadastro + ", foto="
-				+ Arrays.toString(foto) + ", telefone=" + telefone + "]";
+				+ Arrays.toString(foto) + ", telefone=" + telefone
+				+ ", pessoa=" + pessoa + ", achou_perdeu=" + achou_perdeu
+				+ ", categoria=" + categoria + "]";
 	}
 
 	

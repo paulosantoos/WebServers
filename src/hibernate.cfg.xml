@@ -38,6 +38,7 @@
 
 
 		<mapping class="com.aulaws.model.Marcacao" />
+		<mapping class="com.aulaws.model.Categoria" />
 
 
 	</session-factory>
