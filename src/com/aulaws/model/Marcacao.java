@@ -1,6 +1,5 @@
 package com.aulaws.model;
 
-
 import java.io.Serializable;
 import java.util.Arrays;
 
@@ -17,26 +16,19 @@ import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 import javax.persistence.Table;
 
-
 @Entity
 @Table(name = "marcacao")
 @NamedQueries({ @NamedQuery(name = "marcacao.listar", query = "select marcacao from Marcacao marcacao") })
-
 public class Marcacao implements Serializable {
 
-	
-
-	/**
-	 * 
-	 */
 	private static final long serialVersionUID = 1L;
 
-
-
-
-	public Marcacao(){
+	public static long getSerialversionuid() {
+		return serialVersionUID;
 	}
-	
+
+	public Marcacao() {
+	}
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
@@ -64,15 +56,14 @@ public class Marcacao implements Serializable {
 
 	@Column(name = "mar_pessoa")
 	String pessoa;
-	
+
 	@Column(name = "mar_achou_perdeu", columnDefinition = "tinyint default false")
 	boolean achou_perdeu;
-	
+
 	@ManyToOne(fetch = FetchType.EAGER)
 	@JoinColumn(name = "mar_cat_id", referencedColumnName = "cat_id", nullable = false)
 	private Categoria categoria = new Categoria();
-	
-	
+
 	public boolean isAchou_perdeu() {
 		return achou_perdeu;
 	}
@@ -163,6 +154,4 @@ public class Marcacao implements Serializable {
 				+ ", categoria=" + categoria + "]";
 	}
 
-	
-	
-	}
+}
