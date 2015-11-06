@@ -46,11 +46,13 @@ public class AulaWS {
 	public String listarTodosClientesGSON2() {
 
 		Session sessao = HibernateUtil.getSessionFactory().openSession();
+		sessao.beginTransaction();
 		List<Marcacao> marcacao = new ArrayList<>();
 
 		try {
 			Query consulta = sessao.getNamedQuery("marcacao.listar");
 			marcacao = consulta.list();
+			sessao.getTransaction().commit();
 		} catch (RuntimeException ex) {
 			throw ex;
 
