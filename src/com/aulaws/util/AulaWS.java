@@ -46,7 +46,7 @@ public class AulaWS {
 	public String listarTodosClientesGSON2() {
 
 		Session sessao = HibernateUtil.getSessionFactory().openSession();
-		List<Marcacao> marcacao = null;
+		List<Marcacao> marcacao = new ArrayList<>();
 
 		try {
 			Query consulta = sessao.getNamedQuery("marcacao.listar");
